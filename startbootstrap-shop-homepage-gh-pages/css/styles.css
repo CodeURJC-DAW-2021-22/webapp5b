@@ -11308,6 +11308,16 @@ textarea.form-control-lg {
   .fs-4 {
     font-size: 1.5rem !important;
   }
+
+  /* For profileConfiguration */
+  #change-password-form.form-popup {
+    left: 37.5vw !important;
+  }
+
+  #change-password-form .form-container {
+    width: 25vw !important;
+  }
+
 }
 @media print {
   .d-print-inline {
@@ -11472,6 +11482,45 @@ section.section-login {
   font-size: 0.9rem;
   letter-spacing: 0.05rem;
   padding: 0.75rem 1rem;
+}
+
+/* Profile Configuration Styles */
+
+.user-icon-profileConfiguration {
+  max-width: 20vw;
+}
+
+.profile-data-profileConfiguration {
+  margin-top: 1vh;
+}
+
+.change-password-text {
+  margin: 2vh 0;
+}
+
+#change-password-form.form-popup {
+  display: none;
+  position: fixed;
+  top: 10vh;
+  left: 25vw;
+  /* border: 3px solid #f1f1f1; */
+  box-shadow: 2px 2px 15px var(--bs-gray-600);
+  z-index: 9;
+}
+
+#change-password-form .form-container {
+  width: 50vw;
+  height: 60vh;
+  padding: 10px;
+  background: white;
+}
+
+#cancel-changePassword {
+  margin-top: 1vh;
+}
+
+#changePassword-btn-container {
+  margin-top: 10vh;
 }
 
 /* .footer-login {
