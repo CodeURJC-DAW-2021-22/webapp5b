@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Controller
 
 public class productViewController {
-	@GetMapping("/productView.html")
+	@GetMapping("/productView")
     public String greeting(Model model) {
         return "productView";
     }
