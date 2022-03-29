@@ -138,6 +138,8 @@ $('#formProducts').submit(function(e){
 
                 var images = [];
                 formElements = $(".img-group")[0].children.length
+                
+
 
                 for(let imageIndex = 0; imageIndex < formElements; imageIndex++){
                     formData = new FormData($("#imageForm" + (imageIndex + 1))[0])

@@ -13,7 +13,7 @@ import com.softwear.webapp5.data.ProductSize;
 import com.softwear.webapp5.data.StaticDTO;
 
 import com.softwear.webapp5.data.CouponView;
-import com.softwear.webapp5.data.ProductView;
+import com.softwear.webapp5.data.ProductDTO;
 import com.softwear.webapp5.model.Coupon;
 import com.softwear.webapp5.model.Product;
 import com.softwear.webapp5.data.ShopUserView;
@@ -118,9 +118,11 @@ public class RestAdminController {
     @PostMapping("/manageProducts/{productId}/image/{imageIndex}")
     public Product productImages(@PathVariable Long productId, @PathVariable int imageIndex, @RequestParam("img") MultipartFile img) throws IOException {
         Product product = productService.findById(productId).get();
+
         if(imageIndex < product.getImages().size()) {
             product.setImageFile(imageIndex, BlobProxy.generateProxy(
                     img.getInputStream(), img.getSize()));
+                    
         } else {
             imageIndex = product.getImages().size();
             product.addImage("/product/" + product.getId() + "/image/" + imageIndex);
@@ -203,11 +205,11 @@ public class RestAdminController {
     }
     
     @GetMapping("/manageProducts/{pageNumber}")
-    public List<ProductView> products(Model model, @PathVariable int pageNumber){
+    public List<ProductDTO> products(Model model, @PathVariable int pageNumber){
         Page<Product> productPage = productService.findAll(PageRequest.of(pageNumber, 10));
-        List<ProductView> listProduct= new ArrayList<>();
+        List<ProductDTO> listProduct= new ArrayList<>();
         for(Product p: productPage) {
-        	listProduct.add(new ProductView(p));
+        	listProduct.add(new ProductDTO(p));
         }
         return listProduct;
     }

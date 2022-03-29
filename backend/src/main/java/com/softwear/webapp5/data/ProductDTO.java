@@ -1,11 +1,11 @@
 package com.softwear.webapp5.data;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.Set;
 
+import com.softwear.webapp5.model.Image;
 import com.softwear.webapp5.model.Product;
 
-public class ProductView {
+public class ProductDTO {
 	
 	private Long id;
 	private String name;
@@ -13,21 +13,20 @@ public class ProductView {
 	private double price;
 	private long stock;
 	private ProductSize size;
-	private List<String> images;
-	
-	
-	public ProductView(Product p) {
-		this.id = p.getId();
-		this.name = p.getName();
-		this.description = p.getDescription();
-		this.price = p.getPrice();
-		this.stock = p.getStock();
-		this.size = p.getSize();
-		this.images = p.getImages();
+	private Set<Image> images;
+		
+	public ProductDTO(Product product) {
+		this.id = product.getId();
+		this.name = product.getName();
+		this.description = product.getDescription();
+		this.price = product.getPrice();
+		this.stock = product.getStock();
+		this.size = product.getSize();
+		this.images = product.getImage();
 	}
 	
-	public ProductView(Long id, String name, String description, double price, long stock, ProductSize size,
-			ArrayList<String> images) {
+	public ProductDTO(Long id, String name, String description, double price, long stock, ProductSize size,
+			Set<Image> images) {
 		this.id = id;
 		this.name = name;
 		this.description = description;
@@ -72,10 +71,10 @@ public class ProductView {
 	public void setSize(ProductSize size) {
 		this.size = size;
 	}
-	public List<String> getImages() {
+	public Set<Image> getImages() {
 		return images;
 	}
-	public void setImages(ArrayList<String> images) {
+	public void setImages(Set<Image> images) {
 		this.images = images;
 	}
 	

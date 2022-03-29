@@ -10,8 +10,6 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
-import java.io.File;
-import java.sql.Blob;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -59,36 +57,6 @@ public class ProductService {
 		if(product.isPresent()) {
 			productRepository.delete(product.get());
 		}
-	}
-
-	public String getFirstImage(Product product) {
-		if(product.getImages().size() > 0) {
-			return product.getImage(0);
-		}
-		return "";
-	}
-
-	public Blob getFirstImageFile(Product product){
-		if(product.getImageFiles().size() > 0){
-			return product.getImageFile(0);
-		}
-		return null;
-	}
-
-	public List<String> getNonFirstImages(Product product) {
-		List<String> listCopy = new ArrayList<>(product.getImages());
-		if(listCopy.size() > 0) {
-			listCopy.remove(0);
-		}
-		return listCopy;
-	}
-
-	public ArrayList<Blob> getNonFirstImageFiles(Product product){
-		ArrayList<Blob> copiedArrayList = new ArrayList<>(product.getImageFiles());
-		if (copiedArrayList.size() > 0) {
-			copiedArrayList.remove(0);
-		}
-		return copiedArrayList;
 	}
 
 	public List<ProductAvailabilityBySize> getAvailableSizesStatus(Product product){
