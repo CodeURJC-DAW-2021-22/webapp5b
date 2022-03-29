@@ -6,6 +6,11 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class ImageService {
+
+    public Blob getImageFromRoute(String route, Long productID, Long imageID){
+        
+    }
+
     public String getFirstImageRoute(){
         return "";
     }

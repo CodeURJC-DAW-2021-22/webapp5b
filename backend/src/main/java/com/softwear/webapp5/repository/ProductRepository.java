@@ -21,6 +21,8 @@ public interface ProductRepository extends JpaRepository <Product, Long> {
     public Page<Product> findBySize(ProductSize size, Pageable page);
     Optional<Product> findByNameAndSize(String name, ProductSize size);
 
+    public List<Product>findProductsByImagesId(Long imageId);    
+
     @Query(value = "SELECT DISTINCT size FROM Product WHERE name = :name AND stock <> 0", nativeQuery = true)
     public List<ProductSize> FindSizeAvailableByName(@Param("name") String name);
     

@@ -21,10 +21,12 @@ import org.springframework.stereotype.Service;
 
 import com.softwear.webapp5.data.ProductSize;
 import com.softwear.webapp5.model.Coupon;
+import com.softwear.webapp5.model.Image;
 import com.softwear.webapp5.model.Transaction;
 import com.softwear.webapp5.model.ShopUser;
 
 import java.util.List;
+import java.util.Set;
 
 @Service
 public class DatabaseInitializer {
@@ -56,86 +58,149 @@ public class DatabaseInitializer {
 		userRepository.save(admin);
 		userRepository.save(user);
 
-		ArrayList<String> imgsItem1 = new ArrayList<>();
-		ArrayList<String> imgsItem2 = new ArrayList<>();
-		ArrayList<String> imgsItem3 = new ArrayList<>();
-		ArrayList<String> imgsItem4 = new ArrayList<>();
-		ArrayList<String> imgsItem5 = new ArrayList<>();
-		ArrayList<String> imgsItem6 = new ArrayList<>();
-		ArrayList<String> imgsItem7 = new ArrayList<>();
-		ArrayList<String> imgsItem8 = new ArrayList<>();
-		ArrayList<String> imgsItem9 = new ArrayList<>();
-		ArrayList<String> imgsItem10 = new ArrayList<>();
-		ArrayList<String> imgsItem11 = new ArrayList<>();
-		ArrayList<String> imgsItem12 = new ArrayList<>();
-		ArrayList<String> imgsItem13 = new ArrayList<>();
-		ArrayList<String> imgsItem14 = new ArrayList<>();
-		ArrayList<String> imgsItem15 = new ArrayList<>();
-		ArrayList<String> imgsItem16 = new ArrayList<>();
+		Image image1 = new Image();
+		Image image2 = new Image();
+		Image image3 = new Image();
+		Image image4 = new Image();
+		Image image5 = new Image();
+		Image image6 = new Image();
+		Image image7 = new Image();
+		Image image8 = new Image();
+		Image image9_1 = new Image();
+		Image image9_2 = new Image();
+		Image image9_3 = new Image();
+		Image image10 = new Image();
+		Image image11_1 = new Image();
+		Image image11_2 = new Image();
+		Image image12 = new Image();
+		Image image13_1 = new Image();
+		Image image13_2 = new Image();
+		Image image13_3 = new Image();
+		Image image14 = new Image();
+		Image image15 = new Image();
+		Image image16 = new Image();
 
-		ArrayList<Blob> blobItem1 = new ArrayList<>();
-		ArrayList<Blob> blobItem2 = new ArrayList<>();
-		ArrayList<Blob> blobItem3 = new ArrayList<>();
-		ArrayList<Blob> blobItem4 = new ArrayList<>();
-		ArrayList<Blob> blobItem5 = new ArrayList<>();
-		ArrayList<Blob> blobItem6 = new ArrayList<>();
-		ArrayList<Blob> blobItem7 = new ArrayList<>();
-		ArrayList<Blob> blobItem8 = new ArrayList<>();
-		ArrayList<Blob> blobItem9 = new ArrayList<>();
-		ArrayList<Blob> blobItem10 = new ArrayList<>();
-		ArrayList<Blob> blobItem11 = new ArrayList<>();
-		ArrayList<Blob> blobItem12 = new ArrayList<>();
-		ArrayList<Blob> blobItem13 = new ArrayList<>();
-		ArrayList<Blob> blobItem14 = new ArrayList<>();
-		ArrayList<Blob> blobItem15 = new ArrayList<>();
-		ArrayList<Blob> blobItem16 = new ArrayList<>();
+		Set<Image> imageList1 = new ArrayList<>();
+		Set<Image> imageList2 = new ArrayList<>();
+		Set<Image> imageList3 = new ArrayList<>();
+		Set<Image> imageList4 = new ArrayList<>();
+		Set<Image> imageList5 = new ArrayList<>();
+		Set<Image> imageList6 = new ArrayList<>();
+		Set<Image> imageList7 = new ArrayList<>();
+		Set<Image> imageList8 = new ArrayList<>();
+		Set<Image> imageList9 = new ArrayList<>();
+		Set<Image> imageList10 = new ArrayList<>();
+		Set<Image> imageList11 = new ArrayList<>();
+		Set<Image> imageList12 = new ArrayList<>();
+		Set<Image> imageList13 = new ArrayList<>();
+		Set<Image> imageList14 = new ArrayList<>();
+		Set<Image> imageList15 = new ArrayList<>();
+		Set<Image> imageList16 = new ArrayList<>();
 
-		imgsItem1.add("/static/assets/productos/item1.webp");
-		imgsItem2.add("/static/assets/productos/item2.webp");
-		imgsItem3.add("/static/assets/productos/item3.webp");
-		imgsItem4.add("/static/assets/productos/item4.webp");
-		imgsItem5.add("/static/assets/productos/item5.webp");
-		imgsItem6.add("/static/assets/productos/item6.webp");
-		imgsItem7.add("/static/assets/productos/item7.webp");
-		imgsItem8.add("/static/assets/productos/item8.webp");
-		imgsItem9.add("/static/assets/productos/item9-1.webp");
-		imgsItem9.add("/static/assets/productos/item9-2.webp");
-		imgsItem9.add("/static/assets/productos/item9-3.webp");
-		imgsItem10.add("/static/assets/productos/item10.webp");
-		imgsItem11.add("/static/assets/productos/item11-1.webp");
-		imgsItem11.add("/static/assets/productos/item11-2.webp");
-		imgsItem12.add("/static/assets/productos/item12.webp");
-		imgsItem13.add("/static/assets/productos/item13-1.webp");
-		imgsItem13.add("/static/assets/productos/item13-2.webp");
-		imgsItem13.add("/static/assets/productos/item13-3.webp");
-		imgsItem14.add("/static/assets/productos/item14.webp");
-		imgsItem15.add("/static/assets/productos/item15.webp");
-		imgsItem16.add("/static/assets/productos/item16.webp");
+		imageList1.add(image1);
+		imageList2.add(image2);
+		imageList3.add(image3);
+		imageList4.add(image4);
+		imageList5.add(image5);
+		imageList6.add(image6);
+		imageList7.add(image7);
+		imageList8.add(image8);
+		imageList9.add(image9_1);
+		imageList9.add(image9_2);
+		imageList9.add(image9_3);
+		imageList10.add(image10);
+		imageList11.add(image11_1);
+		imageList11.add(image11_2);
+		imageList12.add(image12);
+		imageList13.add(image13_1);
+		imageList13.add(image13_2);
+		imageList14.add(image13_3);
+		imageList14.add(image14);
+		imageList15.add(image15);
+		imageList16.add(image16);
 
-		blobInitializer(imgsItem1, blobItem1, 1);
-		blobInitializer(imgsItem2, blobItem2, 6);
-		blobInitializer(imgsItem3, blobItem3, 11);
-		blobInitializer(imgsItem4, blobItem4, 16);
-		blobInitializer(imgsItem5, blobItem5, 21);
-		blobInitializer(imgsItem6, blobItem6, 26);
-		blobInitializer(imgsItem7, blobItem7, 31);
-		blobInitializer(imgsItem8, blobItem8, 36);
-		blobInitializer(imgsItem9, blobItem9, 41);
-		blobInitializer(imgsItem10, blobItem10, 46);
-		blobInitializer(imgsItem11, blobItem11, 51);
-		blobInitializer(imgsItem12, blobItem12, 56);
-		blobInitializer(imgsItem13, blobItem13, 61);
-		blobInitializer(imgsItem14, blobItem14, 66);
-		blobInitializer(imgsItem15, blobItem15, 71);
-		blobInitializer(imgsItem16, blobItem16, 76);
+		List<String> imgsRoutes1 = new ArrayList<>();
+		List<String> imgsRoutes2 = new ArrayList<>();
+		List<String> imgsRoutes3 = new ArrayList<>();
+		List<String> imgsRoutes4 = new ArrayList<>();
+		List<String> imgsRoutes5 = new ArrayList<>();
+		List<String> imgsRoutes6 = new ArrayList<>();
+		List<String> imgsRoutes7 = new ArrayList<>();
+		List<String> imgsRoutes8 = new ArrayList<>();
+		List<String> imgsRoutes9 = new ArrayList<>();
+		List<String> imgsRoutes10 = new ArrayList<>();
+		List<String> imgsRoutes11 = new ArrayList<>();
+		List<String> imgsRoutes12 = new ArrayList<>();
+		List<String> imgsRoutes13 = new ArrayList<>();
+		List<String> imgsRoutes14 = new ArrayList<>();
+		List<String> imgsRoutes15 = new ArrayList<>();
+		List<String> imgsRoutes16 = new ArrayList<>();
+
+		List<Blob> blobItem1 = new ArrayList<>();
+		List<Blob> blobItem2 = new ArrayList<>();
+		List<Blob> blobItem3 = new ArrayList<>();
+		List<Blob> blobItem4 = new ArrayList<>();
+		List<Blob> blobItem5 = new ArrayList<>();
+		List<Blob> blobItem6 = new ArrayList<>();
+		List<Blob> blobItem7 = new ArrayList<>();
+		List<Blob> blobItem8 = new ArrayList<>();
+		List<Blob> blobItem9 = new ArrayList<>();
+		List<Blob> blobItem10 = new ArrayList<>();
+		List<Blob> blobItem11 = new ArrayList<>();
+		List<Blob> blobItem12 = new ArrayList<>();
+		List<Blob> blobItem13 = new ArrayList<>();
+		List<Blob> blobItem14 = new ArrayList<>();
+		List<Blob> blobItem15 = new ArrayList<>();
+		List<Blob> blobItem16 = new ArrayList<>();
+
+		imgsRoutes1.add("/static/assets/productos/item1.webp");
+		imgsRoutes2.add("/static/assets/productos/item2.webp");
+		imgsRoutes3.add("/static/assets/productos/item3.webp");
+		imgsRoutes4.add("/static/assets/productos/item4.webp");
+		imgsRoutes5.add("/static/assets/productos/item5.webp");
+		imgsRoutes6.add("/static/assets/productos/item6.webp");
+		imgsRoutes7.add("/static/assets/productos/item7.webp");
+		imgsRoutes8.add("/static/assets/productos/item8.webp");
+		imgsRoutes9.add("/static/assets/productos/item9-1.webp");
+		imgsRoutes9.add("/static/assets/productos/item9-2.webp");
+		imgsRoutes9.add("/static/assets/productos/item9-3.webp");
+		imgsRoutes10.add("/static/assets/productos/item10.webp");
+		imgsRoutes11.add("/static/assets/productos/item11-1.webp");
+		imgsRoutes11.add("/static/assets/productos/item11-2.webp");
+		imgsRoutes12.add("/static/assets/productos/item12.webp");
+		imgsRoutes13.add("/static/assets/productos/item13-1.webp");
+		imgsRoutes13.add("/static/assets/productos/item13-2.webp");
+		imgsRoutes13.add("/static/assets/productos/item13-3.webp");
+		imgsRoutes14.add("/static/assets/productos/item14.webp");
+		imgsRoutes15.add("/static/assets/productos/item15.webp");
+		imgsRoutes16.add("/static/assets/productos/item16.webp");
+
+		blobInitializer(imageList1, imgsRoutes1, blobItem1);
+		blobInitializer(imageList2, imgsRoutes2, blobItem2);
+		blobInitializer(imageList3, imgsRoutes3, blobItem3);
+		blobInitializer(imageList4, imgsRoutes4, blobItem4);
+		blobInitializer(imageList5, imgsRoutes5, blobItem5);
+		blobInitializer(imageList6, imgsRoutes6, blobItem6);
+		blobInitializer(imageList7, imgsRoutes7, blobItem7);
+		blobInitializer(imageList8, imgsRoutes8, blobItem8);
+		blobInitializer(imageList9, imgsRoutes9, blobItem9);
+		blobInitializer(imageList10, imgsRoutes10, blobItem10);
+		blobInitializer(imageList11, imgsRoutes11, blobItem11);
+		blobInitializer(imageList12, imgsRoutes12, blobItem12);
+		blobInitializer(imageList13, imgsRoutes13, blobItem13);
+		blobInitializer(imageList14, imgsRoutes14, blobItem14);
+		blobInitializer(imageList15, imgsRoutes15, blobItem15);
+		blobInitializer(imageList16, imgsRoutes16, blobItem16);
 
 		String description_puffer_jacket = "";
 
-		Product puffer_jacket_XS = new Product("Puffer jacket", description_puffer_jacket, 45, (long) 13, ProductSize.XS, imgsItem1, blobItem1);
-		Product puffer_jacket_S = new Product("Puffer jacket", description_puffer_jacket, 45, (long) 99, ProductSize.S, imgsItem1, null);
-		Product puffer_jacket_M = new Product("Puffer jacket", description_puffer_jacket, 45, (long) 23, ProductSize.M, imgsItem1, null);
-		Product puffer_jacket_L = new Product("Puffer jacket", description_puffer_jacket, 45, (long) 109, ProductSize.L, imgsItem1, null);
-		Product puffer_jacket_XL = new Product("Puffer jacket", description_puffer_jacket, 45, (long) 0, ProductSize.XL, imgsItem1, null);
+		Product puffer_jacket_XS = new Product("Puffer jacket", description_puffer_jacket, 45, (long) 13, ProductSize.XS, imageList1);
+		Product puffer_jacket_S = new Product("Puffer jacket", description_puffer_jacket, 45, (long) 99, ProductSize.S, imageList1);
+		Product puffer_jacket_M = new Product("Puffer jacket", description_puffer_jacket, 45, (long) 23, ProductSize.M, imageList1);
+		Product puffer_jacket_L = new Product("Puffer jacket", description_puffer_jacket, 45, (long) 109, ProductSize.L, imageList1);
+		Product puffer_jacket_XL = new Product("Puffer jacket", description_puffer_jacket, 45, (long) 0, ProductSize.XL, imageList1);
+
+		
 
 		productRepository.save(puffer_jacket_XS);
 		productRepository.save(puffer_jacket_S);
@@ -258,11 +323,11 @@ public class DatabaseInitializer {
 		
 		String description_topos_dress = "Short and ruffled dress in blue with white topos";
 
-		Product topos_dress_XS = new Product("Topos dress", description_topos_dress, 72, (long) 12, ProductSize.XS, imgsItem10, blobItem10);
-		Product topos_dress_S = new Product("Topos dress", description_topos_dress, 72, (long) 24, ProductSize.S, imgsItem10, null);
-		Product topos_dress_M = new Product("Topos dress", description_topos_dress, 72, (long) 31, ProductSize.M, imgsItem10, null);
-		Product topos_dress_L = new Product("Topos dress", description_topos_dress, 72, (long) 30, ProductSize.L, imgsItem10, null);
-		Product topos_dress_XL = new Product("Topos dress", description_topos_dress, 72, (long) 68, ProductSize.XL, imgsItem10, null);
+		Product topos_dress_XS = new Product("Topos dress", description_topos_dress, 72, (long) 12, ProductSize.XS, imgsRoutes10, blobItem10);
+		Product topos_dress_S = new Product("Topos dress", description_topos_dress, 72, (long) 24, ProductSize.S, imgsRoutes10, null);
+		Product topos_dress_M = new Product("Topos dress", description_topos_dress, 72, (long) 31, ProductSize.M, imgsRoutes10, null);
+		Product topos_dress_L = new Product("Topos dress", description_topos_dress, 72, (long) 30, ProductSize.L, imgsRoutes10, null);
+		Product topos_dress_XL = new Product("Topos dress", description_topos_dress, 72, (long) 68, ProductSize.XL, imgsRoutes10, null);
 
 		productRepository.save(topos_dress_XS);
 		productRepository.save(topos_dress_S);
@@ -272,11 +337,11 @@ public class DatabaseInitializer {
 
 		String description_winter_jacket = "Black waterproof jacket with zipper. Made with goose feather";
 
-		Product winter_jacket_XS = new Product("Winter jacket", description_winter_jacket, 99, (long) 15, ProductSize.XS, imgsItem11, blobItem11);
-		Product winter_jacket_S = new Product("Winter jacket", description_winter_jacket, 99, (long) 24, ProductSize.S, imgsItem11, null);
-		Product winter_jacket_M = new Product("Winter jacket", description_winter_jacket, 99, (long) 34, ProductSize.M, imgsItem11, null);
-		Product winter_jacket_L = new Product("Winter jacket", description_winter_jacket, 99, (long) 3, ProductSize.L, imgsItem11, null);
-		Product winter_jacket_XL = new Product("Winter jacket", description_winter_jacket, 99, (long) 25, ProductSize.XL, imgsItem11, null);
+		Product winter_jacket_XS = new Product("Winter jacket", description_winter_jacket, 99, (long) 15, ProductSize.XS, imgsRoutes11, blobItem11);
+		Product winter_jacket_S = new Product("Winter jacket", description_winter_jacket, 99, (long) 24, ProductSize.S, imgsRoutes11, null);
+		Product winter_jacket_M = new Product("Winter jacket", description_winter_jacket, 99, (long) 34, ProductSize.M, imgsRoutes11, null);
+		Product winter_jacket_L = new Product("Winter jacket", description_winter_jacket, 99, (long) 3, ProductSize.L, imgsRoutes11, null);
+		Product winter_jacket_XL = new Product("Winter jacket", description_winter_jacket, 99, (long) 25, ProductSize.XL, imgsRoutes11, null);
 
 		productRepository.save(winter_jacket_XS);
 		productRepository.save(winter_jacket_S);
@@ -286,11 +351,11 @@ public class DatabaseInitializer {
 
 		String description_creamy_pants = "Creamy loose fit medium waisted pants";
 
-		Product creamy_pants_XS = new Product("Winter jacket", description_creamy_pants, 86, (long) 45, ProductSize.XS, imgsItem12, blobItem12);
-		Product creamy_pants_S = new Product("Winter jacket", description_creamy_pants, 86, (long) 40, ProductSize.S, imgsItem12, null);
-		Product creamy_pants_M = new Product("Winter jacket", description_creamy_pants, 86, (long) 16, ProductSize.M, imgsItem12, null);
-		Product creamy_pants_L = new Product("Winter jacket", description_creamy_pants, 86, (long) 11, ProductSize.L, imgsItem12, null);
-		Product creamy_pants_XL = new Product("Winter jacket", description_creamy_pants, 86, (long) 5, ProductSize.XL, imgsItem12, null);
+		Product creamy_pants_XS = new Product("Winter jacket", description_creamy_pants, 86, (long) 45, ProductSize.XS, imgsRoutes12, blobItem12);
+		Product creamy_pants_S = new Product("Winter jacket", description_creamy_pants, 86, (long) 40, ProductSize.S, imgsRoutes12, null);
+		Product creamy_pants_M = new Product("Winter jacket", description_creamy_pants, 86, (long) 16, ProductSize.M, imgsRoutes12, null);
+		Product creamy_pants_L = new Product("Winter jacket", description_creamy_pants, 86, (long) 11, ProductSize.L, imgsRoutes12, null);
+		Product creamy_pants_XL = new Product("Winter jacket", description_creamy_pants, 86, (long) 5, ProductSize.XL, imgsRoutes12, null);
 
 		productRepository.save(creamy_pants_XS);
 		productRepository.save(creamy_pants_S);
@@ -300,11 +365,11 @@ public class DatabaseInitializer {
 
 		String description_oversize_hoodie = "Basic hoodie in grey with hood and long sleeve";
 
-		Product oversize_hoodie_XS = new Product("Oversize hoodie", description_oversize_hoodie, 74, (long) 12, ProductSize.XS, imgsItem13, blobItem13);
-		Product oversize_hoodie_S = new Product("Oversize hoodie", description_oversize_hoodie, 74, (long) 4, ProductSize.S, imgsItem13, null);
-		Product oversize_hoodie_M = new Product("Oversize hoodie", description_oversize_hoodie, 74, (long) 16, ProductSize.M, imgsItem13, null);
-		Product oversize_hoodie_L = new Product("Oversize hoodie", description_oversize_hoodie, 74, (long) 0, ProductSize.L, imgsItem13, null);
-		Product oversize_hoodie_XL = new Product("Oversize hoodie", description_oversize_hoodie, 74, (long) 9, ProductSize.XL, imgsItem13, null);
+		Product oversize_hoodie_XS = new Product("Oversize hoodie", description_oversize_hoodie, 74, (long) 12, ProductSize.XS, imgsRoutes13, blobItem13);
+		Product oversize_hoodie_S = new Product("Oversize hoodie", description_oversize_hoodie, 74, (long) 4, ProductSize.S, imgsRoutes13, null);
+		Product oversize_hoodie_M = new Product("Oversize hoodie", description_oversize_hoodie, 74, (long) 16, ProductSize.M, imgsRoutes13, null);
+		Product oversize_hoodie_L = new Product("Oversize hoodie", description_oversize_hoodie, 74, (long) 0, ProductSize.L, imgsRoutes13, null);
+		Product oversize_hoodie_XL = new Product("Oversize hoodie", description_oversize_hoodie, 74, (long) 9, ProductSize.XL, imgsRoutes13, null);
 
 		productRepository.save(oversize_hoodie_XS);
 		productRepository.save(oversize_hoodie_S);
@@ -314,11 +379,11 @@ public class DatabaseInitializer {
 
 		String description_yellow_set = "Yellow set with short sleeves and pocket shirt and short pants";
 
-		Product yellow_set_XS = new Product("Yellow set", description_yellow_set, 110, (long) 23, ProductSize.XS, imgsItem14, blobItem14);
-		Product yellow_set_S = new Product("Yellow set", description_yellow_set, 110, (long) 0, ProductSize.S, imgsItem14, null);
-		Product yellow_set_M = new Product("Yellow set", description_yellow_set, 110, (long) 15, ProductSize.M, imgsItem14, null);
-		Product yellow_set_L = new Product("Yellow set", description_yellow_set, 110, (long) 3, ProductSize.L, imgsItem14, null);
-		Product yellow_set_XL = new Product("Yellow set", description_yellow_set, 110, (long) 36, ProductSize.XL, imgsItem14, null);
+		Product yellow_set_XS = new Product("Yellow set", description_yellow_set, 110, (long) 23, ProductSize.XS, imgsRoutes14, blobItem14);
+		Product yellow_set_S = new Product("Yellow set", description_yellow_set, 110, (long) 0, ProductSize.S, imgsRoutes14, null);
+		Product yellow_set_M = new Product("Yellow set", description_yellow_set, 110, (long) 15, ProductSize.M, imgsRoutes14, null);
+		Product yellow_set_L = new Product("Yellow set", description_yellow_set, 110, (long) 3, ProductSize.L, imgsRoutes14, null);
+		Product yellow_set_XL = new Product("Yellow set", description_yellow_set, 110, (long) 36, ProductSize.XL, imgsRoutes14, null);
 
 		productRepository.save(yellow_set_XS);
 		productRepository.save(yellow_set_S);
@@ -328,11 +393,11 @@ public class DatabaseInitializer {
 
 		String description_pocket_pants = "Long short waisted troussers with pockets in pistachio tone";
 
-		Product pocket_pants_XS = new Product("Pocket pistachio pants", description_pocket_pants, 84, (long) 37, ProductSize.XS, imgsItem15, blobItem15);
-		Product pocket_pants_S = new Product("Pocket pistachio pants", description_pocket_pants, 84, (long) 15, ProductSize.S, imgsItem15, null);
-		Product pocket_pants_M = new Product("Pocket pistachio pants", description_pocket_pants, 84, (long) 1, ProductSize.M, imgsItem15, null);
-		Product pocket_pants_L = new Product("Pocket pistachio pants", description_pocket_pants, 84, (long) 34, ProductSize.L, imgsItem15, null);
-		Product pocket_pants_XL = new Product("Pocket pistachio pants", description_pocket_pants, 84, (long) 6, ProductSize.XL, imgsItem15, null);
+		Product pocket_pants_XS = new Product("Pocket pistachio pants", description_pocket_pants, 84, (long) 37, ProductSize.XS, imgsRoutes15, blobItem15);
+		Product pocket_pants_S = new Product("Pocket pistachio pants", description_pocket_pants, 84, (long) 15, ProductSize.S, imgsRoutes15, null);
+		Product pocket_pants_M = new Product("Pocket pistachio pants", description_pocket_pants, 84, (long) 1, ProductSize.M, imgsRoutes15, null);
+		Product pocket_pants_L = new Product("Pocket pistachio pants", description_pocket_pants, 84, (long) 34, ProductSize.L, imgsRoutes15, null);
+		Product pocket_pants_XL = new Product("Pocket pistachio pants", description_pocket_pants, 84, (long) 6, ProductSize.XL, imgsRoutes15, null);
 
 		productRepository.save(pocket_pants_XS);
 		productRepository.save(pocket_pants_S);
@@ -342,11 +407,11 @@ public class DatabaseInitializer {
 
 		String description_goodvibes_set = "White & green shirt and Good vibes logo complementing green sporty shorts";
 
-		Product goodvibes_set_XS = new Product("Good vibes set", description_goodvibes_set, 125, (long) 7, ProductSize.XS, imgsItem16, blobItem16);
-		Product goodvibes_set_S = new Product("Good vibes set", description_goodvibes_set, 125, (long) 13, ProductSize.S, imgsItem16, null);
-		Product goodvibes_set_M = new Product("Good vibes set", description_goodvibes_set, 125, (long) 4, ProductSize.M, imgsItem16, null);
-		Product goodvibes_set_L = new Product("Good vibes set", description_goodvibes_set, 125, (long) 25, ProductSize.L, imgsItem16, null);
-		Product goodvibes_set_XL = new Product("Good vibes set", description_goodvibes_set, 125, (long) 6, ProductSize.XL, imgsItem16, null);
+		Product goodvibes_set_XS = new Product("Good vibes set", description_goodvibes_set, 125, (long) 7, ProductSize.XS, imgsRoutes16, blobItem16);
+		Product goodvibes_set_S = new Product("Good vibes set", description_goodvibes_set, 125, (long) 13, ProductSize.S, imgsRoutes16, null);
+		Product goodvibes_set_M = new Product("Good vibes set", description_goodvibes_set, 125, (long) 4, ProductSize.M, imgsRoutes16, null);
+		Product goodvibes_set_L = new Product("Good vibes set", description_goodvibes_set, 125, (long) 25, ProductSize.L, imgsRoutes16, null);
+		Product goodvibes_set_XL = new Product("Good vibes set", description_goodvibes_set, 125, (long) 6, ProductSize.XL, imgsRoutes16, null);
 
 		productRepository.save(goodvibes_set_XS);
 		productRepository.save(goodvibes_set_S);
@@ -521,13 +586,14 @@ public class DatabaseInitializer {
 		transactionRepository.save(cart);
 	}
 
-	public void blobInitializer(List<String> imgsItem, ArrayList<Blob> blobItem, int imgNum) throws IOException{
-		for(int i = 0; i < imgsItem.size(); i++) {
-			String image = imgsItem.get(i);
-			Resource imageResource = new ClassPathResource(image);
-			//FileInputStream imageStream = new FileInputStream(imageFile);
-			blobItem.add(BlobProxy.generateProxy(imageResource.getInputStream(), imageResource.contentLength()));
-			imgsItem.set(i, "/product/" + imgNum + "/image/" + i);
+	public void blobInitializer(List<Image> imageList, List<String> imageRouteList, List<Blob> blobItem) throws IOException{
+		for(int i = 0; i < imageList.size(); i++) {
+			String imageRoute = imageRouteList.get(i);
+			Resource imageResource = new ClassPathResource(imageRoute);
+			Blob imageBlob = BlobProxy.generateProxy(imageResource.getInputStream(), imageResource.contentLength());
+			imageRoute = "/product/image/" + i;
+			imageList.get(i).setImageFile(imageBlob);
+			imageList.get(i).setRoute(imageRoute);
 		}
 	}	
 }
