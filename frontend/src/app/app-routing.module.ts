@@ -8,9 +8,9 @@ const routes: Routes = [
     component :PublicLayoutComponent,
     children :[
       {
-        /*path:'auth',
-        loadChildren :() => import('./modules/authentication/authentication.module').then(m => m.AuthenticationModule),
-        data : {preload:true}*/
+        path:'',
+        loadChildren :() => import('./modules/home/home.module').then(m => m.HomeModule),
+        data : {preload:true}
       }
     ]  
   },
