@@ -8,6 +8,7 @@ import { ProductSize } from '@app/shared/data-type/product-size';
 import { ProductFilter } from '@app/shared/data-type/product-filter';
 import { PageableProduct } from '@app/shared/model/pageable-product';
 import { ProductFilterToId } from '@app/shared/data-type';
+import { NewProduct, ProductNoImages } from '@app/shared/model';
 
 const BASE_URL = '/api/products'
 
@@ -47,6 +48,31 @@ export class ProductService {
     return this.httpClient.get(url).pipe() as Observable<Product[]>
   }
   
+  getProducts(page: number): Observable<PageableProduct> {
+
+    let url: string = BASE_URL + `?page=${page}`;
+
+    return this.httpClient.get(url).pipe() as Observable<PageableProduct>
+  }
+
+  postProductWithoutImages(product: NewProduct): Observable<Product> {
+
+    let url: string = BASE_URL;
+    return this.httpClient.post(url, product).pipe() as Observable<Product>;
+  }
+
+  putProductWithoutImages(product: ProductNoImages): Observable<Product> {
+
+    let url: string = BASE_URL + `/${product.id}`;
+    return this.httpClient.put(url, product).pipe() as Observable<Product>;
+  }
+
+  deleteProduct(productId: number) {
+
+    let url: string = BASE_URL + `/${productId}`;
+    return this.httpClient.delete(url).pipe() as Observable<Product>
+  }
+
   //getProductSizeAvailability
 
   // getAllProducts

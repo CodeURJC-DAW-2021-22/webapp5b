@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { ShopUser, UserRegister, LoginRequest, UserEditProfile, UserChangePassword } from '@app/shared/model'
+import { ShopUser, UserRegister, LoginRequest, UserEditProfile, UserChangePassword, PageableShopUser } from '@app/shared/model'
 import { Observable } from 'rxjs';
 
 const BASE_URL = '/api/users'
@@ -34,6 +34,12 @@ export class ShopUserService {
 
     let url: string = BASE_URL + '/my/password'
     return this.httpClient.put(url, changePassword).pipe() as Observable<ShopUser>
+  }
+
+  getUsers(page: number): Observable<PageableShopUser> {
+
+    let url: string = BASE_URL + `?page=${page}`
+    return this.httpClient.get(url).pipe() as Observable<PageableShopUser>
   }
 
 }
