@@ -3,30 +3,6 @@
     <div class="container px-4 px-lg-5">
 
         <a class="navbar-brand" [routerLink]="['/']"><img src="../assets/full-logo-new.svg" style = "width: 5vw"></a>
-
-        <div *ngIf="logged" class="nav-item user-icon-small-screen dropdown">
-            <a class="nav-link dropdown-toggle" id="session-small-Dropdown" role="button" data-bs-toggle="dropdown"
-               aria-expanded="false"><img src="../assets/user-icon.png" class="user-icon" style = "width: 3vw"></a>
-
-            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-
-                <li>
-                    <a class="dropdown-item" [routerLink]="['/user/user-info']">Profile</a>
-                </li>
-
-                <li *ngIf="isAdmin"><a class="dropdown-item" [routerLink]="['/admin/admin-home']">Admin Panel</a></li>
-
-                <li>
-                    <a class="dropdown-item" [routerLink]="['/user/user-wishlist']">Wishlist</a>
-                </li>
-
-                <li><hr class="dropdown-divider" /></li>
-
-                <li>
-                    <a class="dropdown-item" [routerLink]="['/logout']" (click)="logOut()">Log Out</a>
-                </li>
-            </ul>
-        </div>
         
 
         <a *ngIf="!logged" class="navbar-brand-2 user-icon-small-screen" [routerLink]="['/login']"><img src="../assets/user-icon.png" class="user-icon" style = "width: 3vw"></a>
@@ -64,7 +40,7 @@
                 <a type="button" id="dropdownBasic1" ngbDropdownToggle><img src="../assets/user-icon.png" class="user-icon" style = "width: 3vw"></a>
                 <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
                     <button ngbDropdownItem [routerLink]="['/profile/user-info']">Profile</button>
-                    <li *ngIs="isAdmin"><a class="dropdown-item" [routerLink]="['/admin-home']">Admin Panel</a></li>
+                    <li *ngIf="isAdmin"><a class="dropdown-item" [routerLink]="['/admin/home']">Admin Panel</a></li>
                     <button ngbDropdownItem [routerLink]="['/transaction/wishlist']">Wishlist</button>
                     <li><hr class="ngbDropdown-divider" /></li>
                     <li>
@@ -78,7 +54,7 @@
             </ul>
         </div>
         <ng-template #notlogged>
-            <a *ngIf="!logged" class="navbar-brand-2 user-icon-big-screen" [routerLink]="['/login']"><img src="../assets/user-icon.png" class="user-icon" style = "width: 3vw"></a>
+            <a class="navbar-brand-2 user-icon-big-screen" [routerLink]="['/login']"><img src="../assets/user-icon.png" class="user-icon" style = "width: 3vw"></a>
         </ng-template>
     </div>
 </nav>
