@@ -13,6 +13,8 @@ const BASE_URL = '/api/auth'
 })
 export class AuthService {
 
+  userLogged: Observable<string> = new Observable()
+
   userData: ShopUser | undefined;
 
   constructor(

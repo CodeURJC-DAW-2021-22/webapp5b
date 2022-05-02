@@ -1,15 +1,22 @@
 import { Component, OnInit } from '@angular/core';
+import { Event, NavigationStart, Router } from '@angular/router';
 import { AuthService } from '@app/core/authentication';
 
 @Component({
   selector: 'app-header', 
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.css']
-
 })
 export class HeaderComponent implements OnInit {
 
-  constructor() { }
+
+
+  constructor(
+    private router: Router,
+    private authService: AuthService
+  ) { 
+    
+  }
   
   isCollapsed: boolean = true;
 
@@ -20,6 +27,19 @@ export class HeaderComponent implements OnInit {
   
   
   ngOnInit(): void {
+
+    
+    this.router.events.subscribe((event: Event) => {
+      if (event instanceof NavigationStart) {
+
+        let userData = this.authService.getUserData();
+        this.logged = userData !== null && userData !== undefined
+        if (userData !== null && userData !== undefined) {
+          this.username = userData.username
+          this.isAdmin = userData.role == "ADMIN"
+        }
+      }
+    });
   }
 
   

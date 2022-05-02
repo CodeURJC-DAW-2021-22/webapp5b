@@ -59,7 +59,7 @@
         </div>
 
         
-        <div *ngIf="logged">
+        <div *ngIf="logged; else goLogin">
             <div class="nav-item user-icon-big-screen dropdown">
                 <a class="nav-link dropdown-toggle" id="sessionDropdown" role="button" data-bs-toggle="dropdown"
                 aria-expanded="false"><img src="../assets/user-icon.png" class="user-icon" style = "width: 3vw"></a>
@@ -81,7 +81,12 @@
             </ul>
         </div>
 
-        <a *ngIf="!logged" class="navbar-brand-2 user-icon-big-screen" [routerLink]="['/login']"><img src="../assets/user-icon.png" class="user-icon" style = "width: 3vw"></a>
+        <ng-template #goLogin>
+            <a class="navbar-brand-2 user-icon-big-screen" [routerLink]="['/login']">
+                <img src="../assets/user-icon.png" class="user-icon" style = "width: 3vw">
+            </a>
+        </ng-template>
+        
 
     </div>
 </nav>
