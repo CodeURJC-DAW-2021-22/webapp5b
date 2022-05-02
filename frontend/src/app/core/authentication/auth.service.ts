@@ -30,8 +30,9 @@ export class AuthService {
   logout(): Observable<AuthResponse> {
     
     let url: string = BASE_URL + `logout`;
-
+    this.userData = undefined
     return this.httpClient.post(url, null).pipe() as Observable<AuthResponse>
+    
   }
 
   loadUser(): Observable<ShopUser> {

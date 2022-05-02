@@ -17,9 +17,9 @@
                                     id="signInUsername" [(ngModel)]="username" required>
 
                             <label for="signInUsername">Username</label>
-                            <p *ngIf="isWrong == true">
+                            <p *ngIf="isWrong">
                                 <ngb-alert [dismissible]="false">
-                                  <strong>nooo</strong> Rellénelos antes de continuar.
+                                  <strong>Usuario o contraseña incorrectos.</strong> Inténtelo de nuevo.
                                 </ngb-alert>
                             </p>
                         </div>

@@ -18,6 +18,7 @@ export class SignUpComponent implements OnInit {
   isEmpty : boolean = false;
   isMatch : boolean = false;
   isValid : boolean = false;
+  isFailed : boolean = false;
 
 
   constructor(private userService: ShopUserService, private authService: AuthService,
@@ -117,8 +118,9 @@ export class SignUpComponent implements OnInit {
 
   errorResponse(): void {
 
-    //add warning about error with server / existing username
+    //warning existing username
     this.emptyFields();
+    this.isFailed = true;
   }
 
 
