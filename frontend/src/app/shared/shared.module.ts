@@ -53,6 +53,7 @@ export class SharedModule {
   }
 }
 
+
 @Component({
   template: ''
 })
@@ -78,3 +79,5 @@ export class NgbdAlertSelfclosing implements OnInit {
 
   public changeSuccessMessage() { this._success.next(`${new Date()} - Message successfully changed.`); }
 }
+
+

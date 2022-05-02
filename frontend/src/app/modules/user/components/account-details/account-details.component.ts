@@ -18,6 +18,8 @@ export class AccountDetailsComponent implements OnInit {
   isWrongEmail: boolean = false;
   isNotProfEdit: boolean = false;
   isWrongDate: boolean = false;
+  isChangedPass: boolean = false;
+  isNotChangedPass: boolean = false;
 
   public user: UserEditProgileInterface = new UserEditProfile();
 
@@ -70,20 +72,19 @@ export class AccountDetailsComponent implements OnInit {
 
       this.userService.editUserProfile(this.user).subscribe(
         response => {
-          console.log(response)
           // Alert profile edited
           this.profileEdited();
 
         },
         error => {
-          console.log(error)
-          // Create alert error
+          // Alert no edited profile
+          this.wrongProfileEdited();
         }
       );
     }
     else{
-    console.log("Data is invalid");
-    // Create alert error
+    // Alert error
+    this.wrongProfileEdited();
     }
   }  
 
@@ -100,16 +101,17 @@ export class AccountDetailsComponent implements OnInit {
         }
         this.userService.changePassword(userChangePassword).subscribe(
           response => {
-            console.log(response)
-            // success alert
+            // alert changed pass
+            this.changedPass();
           },
           error => {
-            console.log(error)
-            // error alert
+            // alert not changed pass
+            this.notChangedPass();
           })
       }).catch(
         (error) => {
-          console.log(error)
+          //console.log(error)
+          this.notChangedPass();
         
       })
   }
@@ -128,5 +130,13 @@ export class AccountDetailsComponent implements OnInit {
 
   wrongEmail() {
     this.isWrongEmail = true;
+  }
+
+  changedPass(){
+    this.isChangedPass = true;
+  }
+
+  notChangedPass(){
+    this.isNotChangedPass = true;
   }
 }

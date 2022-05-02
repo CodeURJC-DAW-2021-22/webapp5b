@@ -32,18 +32,23 @@
                 </ng-template> 
             </ng-template>    
             <p *ngIf="isAmount">
-                <ngb-alert [dismissible]="false" type='danger'>
+                <ngb-alert [dismissible]="true" type='danger'>
                   <strong>Not enough stock</strong>
                 </ngb-alert>
             </p>  
             <p *ngIf="isSelect">
-                <ngb-alert [dismissible]="false" >
+                <ngb-alert [dismissible]="true" >
                   <strong>Select size</strong>
                 </ngb-alert>
             </p> 
-            <p *ngIf="isLessTen">
-                <ngb-alert [dismissible]="false" >
-                  <strong></strong> <!--{{productSizes[selectedProduct].stock}}-->
+            <p *ngIf="isLessTwenty">
+                <ngb-alert [dismissible]="false">
+                  <strong>Low stock, only {{productSizes[selectedProduct!].stock}} units available</strong> <!---->
+                </ngb-alert>
+            </p>  
+            <p *ngIf="isLessFive">
+                <ngb-alert [dismissible]="false" type="danger">
+                  <strong>Low stock, only {{productSizes[selectedProduct!].stock}} units available</strong> <!---->
                 </ngb-alert>
             </p>                                              
         </div>
