@@ -59,34 +59,26 @@
         </div>
 
         
-        <div *ngIf="logged; else goLogin">
-            <div class="nav-item user-icon-big-screen dropdown">
-                <a class="nav-link dropdown-toggle" id="sessionDropdown" role="button" data-bs-toggle="dropdown"
-                aria-expanded="false"><img src="../assets/user-icon.png" class="user-icon" style = "width: 3vw"></a>
-                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <li><a class="dropdown-item" [routerLink]="['/profile/user-info']">Profile</a></li>
-                    
+        <div *ngIf="logged; else notlogged">
+            <div ngbDropdown class="d-inline-block">
+                <a type="button" id="dropdownBasic1" ngbDropdownToggle><img src="../assets/user-icon.png" class="user-icon" style = "width: 3vw"></a>
+                <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+                    <button ngbDropdownItem [routerLink]="['/profile/user-info']">Profile</button>
                     <li *ngIs="isAdmin"><a class="dropdown-item" [routerLink]="['/admin-home']">Admin Panel</a></li>
-
-                    <li><a class="dropdown-item" [routerLink]="['/transaction/wishlist']">Wishlist</a></li>
-                    <li><hr class="dropdown-divider" /></li>
+                    <button ngbDropdownItem [routerLink]="['/transaction/wishlist']">Wishlist</button>
+                    <li><hr class="ngbDropdown-divider" /></li>
                     <li>
-                        <a class="dropdown-item" (click)="logOut()">Log Out</a>
+                        <button ngbDropdownItem (click)="logOut()">Log Out</button>
                     </li>
-                </ul>
-                
+                </div>
             </div>
+            
             <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
                 <li class="nav-item">{{username}}</li>
             </ul>
         </div>
-
-        <ng-template #goLogin>
-            <a class="navbar-brand-2 user-icon-big-screen" [routerLink]="['/login']">
-                <img src="../assets/user-icon.png" class="user-icon" style = "width: 3vw">
-            </a>
+        <ng-template #notlogged>
+            <a *ngIf="!logged" class="navbar-brand-2 user-icon-big-screen" [routerLink]="['/login']"><img src="../assets/user-icon.png" class="user-icon" style = "width: 3vw"></a>
         </ng-template>
-        
-
     </div>
 </nav>
