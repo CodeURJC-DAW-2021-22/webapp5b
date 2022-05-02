@@ -1,6 +1,6 @@
 import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { ProductService } from '@app/core/api';
+import { ProductImagesService, ProductService } from '@app/core/api';
 import { NewProduct, PageableProduct, Product, ProductNoImages } from '@app/shared/model';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { ProductModalComponent } from '../../components/product-modal/product-modal.component';
@@ -19,7 +19,8 @@ export class ManageProductsComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private productService: ProductService,
-    private modalService: NgbModal
+    private modalService: NgbModal,
+    private productImagesService: ProductImagesService
     ) { }
 
   ngOnInit(): void {
@@ -50,6 +51,32 @@ export class ManageProductsComponent implements OnInit {
     this.products[index] = updatedProduct;
   }
 
+  private uploadImages(id: number, images: string[]) {
+    
+    
+    if (images.length > 0) {
+      const formData = new FormData()
+
+    /*
+      for (let [i, image] of images.entries()) {
+
+        
+        formData.append("imagesFile", image)
+      }
+    */
+   
+      for (let i = 0; i < images?.length || 0; i++)
+      formData.append('imagesFile', images[i]);
+  
+      console.log(formData)
+
+      this.productImagesService.postImage(id, formData).subscribe(
+        response => console.log(response)
+      );
+
+    }
+  }
+
   editProduct(index: number) {
 
     const modalRef = this.modalService.open(ProductModalComponent);
@@ -66,8 +93,13 @@ export class ManageProductsComponent implements OnInit {
           size: result.size
         }
 
+        console.log(result)
+
         this.productService.putProductWithoutImages(product).subscribe(
-          response => this.updateProductInTable(index, response),
+          response => {
+            this.updateProductInTable(index, response);
+            this.uploadImages(product.id, result.images)
+          },
           error => console.log(error)
         )
       }
@@ -75,6 +107,7 @@ export class ManageProductsComponent implements OnInit {
       error => console.log(error)
     )
   }
+  
 
   deleteProduct(index: number) {
  

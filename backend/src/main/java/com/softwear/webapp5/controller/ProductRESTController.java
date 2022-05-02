@@ -196,6 +196,7 @@ public class ProductRESTController {
         }
     }
 
+/*
     @PostMapping("/{productId}/image")
     public ResponseEntity<Object> saveProductImage(@PathVariable Long productId,
                 @RequestParam MultipartFile imageFile) throws IOException, URISyntaxException {
@@ -220,6 +221,36 @@ public class ProductRESTController {
             return ResponseEntity.notFound().build();
         }
     }
+*/
+
+    @PostMapping("/{productId}/image")
+    public ResponseEntity<Object> saveProductImages(@PathVariable Long productId,
+            @RequestParam(name = "imagesFile") MultipartFile[] imagesFile) throws URISyntaxException, IOException {
+
+        Optional<Product> productOptional = productService.findById(productId);
+        if(productOptional.isPresent()) {
+            Product product = productOptional.get();
+
+            URI currentLocation = fromCurrentRequest().build().toUri();
+            String imageIndex;
+            URI location = currentLocation;
+            for (MultipartFile imageFile : imagesFile) {
+                imageIndex = Integer.toString(product.getImages().size());
+                location = productService.extendURI(currentLocation, imageIndex);
+
+                product.addImage(location.toString());
+                product.addImageFile(BlobProxy.generateProxy(imageFile.getInputStream(), imageFile.getSize()));
+            }
+
+            productService.save(product);
+            return ResponseEntity.created(location).build();
+
+        } else {
+            return ResponseEntity.notFound().build();
+
+        }
+    }
+
 
     @DeleteMapping("/{productId}/image/{imageIndex}")
     public ResponseEntity<Object> deleteImage(@PathVariable Long productId,
