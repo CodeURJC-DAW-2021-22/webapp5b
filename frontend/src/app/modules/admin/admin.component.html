@@ -1,1 +1,14 @@
-<router-outlet></router-outlet>
+
+<section class="py-5">
+    <div class="container">
+
+    <!-- Account page navigation-->
+    <nav class="nav nav-borders">
+        <a class="nav-link ms-0" [routerLink]="['./home']" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Home</a>
+        <a class="nav-link ms-0" [routerLink]="['./manage/products']" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Manage Products</a>
+        <a class="nav-link ms-0" [routerLink]="['./manage/users']" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Manage Users</a>
+    </nav>
+
+    <router-outlet></router-outlet>
+    </div>
+</section>

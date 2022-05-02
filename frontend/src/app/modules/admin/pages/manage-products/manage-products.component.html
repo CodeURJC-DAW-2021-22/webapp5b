@@ -1,68 +1,61 @@
-<section class="py-5">
-    <div class="container" id="manage-products-container">
+<!-- table -->
+<table class="table">
 
-        <!-- table -->
-        <table class="table">
+    <!-- table header-->
+    <thead>
+        <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Name</th>
+            <th scope="col">Description</th>
+            <th scope="col">Price</th>
+            <th scope="col">Stock</th>
+            <th scope="col">Size</th>
+            <th scope="col" class="d-none">Imgs</th>
+            <th scope="col"></th>
+            <th scope="col"></th>
+        </tr>
+    </thead>
 
-            <!-- table header-->
-            <thead>
-                <tr>
-                    <th scope="col">ID</th>
-                    <th scope="col">Name</th>
-                    <th scope="col">Description</th>
-                    <th scope="col">Price</th>
-                    <th scope="col">Stock</th>
-                    <th scope="col">Size</th>
-                    <th scope="col" class="d-none">Imgs</th>
-                    <th scope="col"></th>
-                    <th scope="col"></th>
-                </tr>
-            </thead>
+    <!-- table body -->
+    <tbody>
+        <tr *ngFor="let product of products; index as i" id="product-{{product.id}}">
+            <td scope="row" class="product-id">{{product.id}}</td>
+            <td class="product-name">{{product.name}}</td>
+            <td class="product-description">{{product.description}}</td>
+            <td class="product-price">{{product.price}}</td>
+            <td class="product-stock">{{product.stock}}</td>
+            <td class="product-size">{{product.size}}</td>
+            <td class="product-imgs d-none">
+                <!-- Add something to watch images-->
+            </td>
+            <td>
+                <button class="btn btn-primary" type="button" 
+                (click)="editProduct(i)"><i class="fa fa-pencil" aria-hidden="true"></i></button>
+            </td>
+            <td><button (click)="deleteProduct(i)" class="btn btn-primary" type="button">
+                <i class="fa fa-trash" aria-hidden="true"></i>
+            </button></td>
+            
+        </tr>
+    </tbody>
 
-            <!-- table body -->
-            <tbody>
-                <tr *ngFor="let product of products; index as i" id="product-{{product.id}}">
-                    <td scope="row" class="product-id">{{product.id}}</td>
-                    <td class="product-name">{{product.name}}</td>
-                    <td class="product-description">{{product.description}}</td>
-                    <td class="product-price">{{product.price}}</td>
-                    <td class="product-stock">{{product.stock}}</td>
-                    <td class="product-size">{{product.size}}</td>
-                    <td class="product-imgs d-none">
-                        <!-- Add something to watch images-->
-                    </td>
-                    <td>
-                        <button class="btn btn-primary" type="button" 
-                        (click)="editProduct(i)"><i class="fa fa-pencil" aria-hidden="true"></i></button>
-                    </td>
-                    <td><button (click)="deleteProduct(i)" class="btn btn-primary" type="button">
-                        <i class="fa fa-trash" aria-hidden="true"></i>
-                    </button></td>
-                    
-                </tr>
-            </tbody>
-
-        </table>
-                
-        <div  class="row row-cols-1 p-2">
-
-            <button *ngIf="totalPages >= nextPage" 
-                class="btn btn-outline-dark m-auto w-75 text-center fw-bold text-uppercase" 
-                type="button" 
-                (click)="loadNextPage()">
-
-                More
-            </button>
-
-            <button class="btn btn-primary m-auto text-center fw-bold text-uppercase my-2" 
-                type="button" 
-                (click)="addProduct()">
-                
-                Add new product
-            </button>
-        </div>
+</table>
         
+<div  class="row row-cols-1 p-2">
 
-    </div>
-</section>
+    <button *ngIf="totalPages >= nextPage" 
+        class="btn btn-outline-dark m-auto w-75 text-center fw-bold text-uppercase" 
+        type="button" 
+        (click)="loadNextPage()">
+
+        More
+    </button>
+
+    <button class="btn btn-primary m-auto text-center fw-bold text-uppercase my-2" 
+        type="button" 
+        (click)="addProduct()">
+        
+        Add new product
+    </button>
+</div>
 

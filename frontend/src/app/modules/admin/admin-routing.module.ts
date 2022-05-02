@@ -11,20 +11,21 @@ import { ManageUsersComponent } from './pages/manage-users/manage-users.componen
 const routes: Routes = [
 
   { 
-    path: 'home',
-    component: AdminHomeComponent,
-    resolve: {
-      incomes: IncomesResolver,
-      sales: SalesResolver
-    }
-  },
-
-  { 
-    path: 'manage',
+    path: '',
     component: AdminComponent,
     children: [
+
       { 
-        path: 'products',
+        path: 'home',
+        component: AdminHomeComponent,
+        resolve: {
+          incomes: IncomesResolver,
+          sales: SalesResolver
+        }
+      },
+
+      { 
+        path: 'manage/products',
         component: ManageProductsComponent,
         resolve: {
           products: PageableProductsResolver
@@ -32,19 +33,19 @@ const routes: Routes = [
       },
 
       { 
-        path: 'users',
+        path: 'manage/users',
         component: ManageUsersComponent,
         resolve: {
 
-        }
+        }        
+
       },
 
-      { path: '', redirectTo: '/admin/home', pathMatch: 'full' }
-    ]
-   },
+      { path: '', redirectTo: 'home', pathMatch: 'full' },
 
-  { path: '', redirectTo: 'home' },
-  { path: 'fillingtable', component: FillingTableComponent },
+      { path: 'manage', redirectTo: 'home', pathMatch: 'full' }
+    ]
+   }
 
 ];
 
