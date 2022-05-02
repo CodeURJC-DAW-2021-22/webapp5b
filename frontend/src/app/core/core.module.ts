@@ -1,5 +1,5 @@
 import { NgModule, Optional, SkipSelf } from '@angular/core';
-
+import { NgFileValidatorLibModule, FileCheck } from 'angular-file-validator'
 
 import { ProductService, ShopUserService, TransactionService } from './api';
 import { AuthGuard, AuthService } from './authentication';
@@ -15,7 +15,8 @@ import { PasswordValidator } from './validator';
     AuthService,
     NavigationService,
     ValidateDataService,
-    PasswordValidator
+    PasswordValidator,
+    FileCheck
   ],
 })
 export class CoreModule { 

@@ -1,8 +1,9 @@
 import { AfterViewInit, Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormArray, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ProductSize } from '@app/shared/data-type';
 import { Product } from '@app/shared/model';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
+import { FileCheck } from 'angular-file-validator';
 
 @Component({
   selector: 'app-product-modal',
@@ -12,6 +13,7 @@ import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 export class ProductModalComponent implements OnInit, AfterViewInit {
 
   sizeOptions: string[] = Object.keys(ProductSize);
+
 
   @Input()
   product?: Product;
@@ -35,7 +37,9 @@ export class ProductModalComponent implements OnInit, AfterViewInit {
 
     size: new FormControl(null, [
       Validators.required
-    ])
+    ]),
+
+    images: new FormArray([new FormControl(null)])
   });
 
   constructor(
@@ -57,6 +61,18 @@ export class ProductModalComponent implements OnInit, AfterViewInit {
     })
   }
 
+  addImageForm() {
+
+    this.getImages().push(new FormControl(null))
+  }
+
+  removeImageForm() {
+
+    let length: number = this.getImages().length - 1;
+    if (length >= 0)
+      this.getImages().removeAt(length);
+  }
+
   closeModalManipulateProduct() {
 
     this.activeModal.dismiss('Modal Closed');
@@ -66,5 +82,10 @@ export class ProductModalComponent implements OnInit, AfterViewInit {
 
     this.activeModal.close(this.manipulateProduct.value);
   }
+
+  getImages(): FormArray {
+
+    return this.manipulateProduct.controls["images"] as FormArray;
+  }  
 
 }

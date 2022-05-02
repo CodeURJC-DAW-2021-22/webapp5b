@@ -8,6 +8,7 @@ import { CoreModule } from '@app/core/core.module';
 import { SharedModule } from '@app/shared/shared.module';
 
 import { AppComponent } from './app.component';
+import { NgFileValidatorLibModule } from 'angular-file-validator';
 
 @NgModule({
   declarations: [
@@ -17,6 +18,7 @@ import { AppComponent } from './app.component';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
+    NgFileValidatorLibModule,
     CoreModule,
     SharedModule.forRoot(),    
     
