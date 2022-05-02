@@ -4,7 +4,7 @@ COPY /frontend /app/frontend
 RUN rm -rf /app/frontend/node_modules
 RUN npm i
 RUN npm i -g @angular/cli
-RUN ng build --base-href="/new/" --named-chunks
+RUN npm run-script build
 
 FROM maven:3.8.4-openjdk-17 as compiler
 ENV WEBAPP_VERSION=lastest

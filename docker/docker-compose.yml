@@ -1,7 +1,7 @@
 version: "3.8"
 services:
     softwear:
-        image: mariorp01/codeurjc-daw-2021-22-webapp5b
+        image: mariorp01/codeurjc-daw-2021-22-webapp5b:latest
         environment:
             - PORT=8443
             - SPRING_DATASOURCE_URL=jdbc:postgresql://postgres/softwear
