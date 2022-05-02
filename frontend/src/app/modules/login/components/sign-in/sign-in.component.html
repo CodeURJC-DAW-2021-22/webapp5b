@@ -18,7 +18,7 @@
 
                             <label for="signInUsername">Username</label>
                             <p *ngIf="isWrong">
-                                <ngb-alert [dismissible]="false">
+                                <ngb-alert [dismissible]="true">
                                   <strong>Usuario o contraseña incorrectos.</strong> Inténtelo de nuevo.
                                 </ngb-alert>
                             </p>
@@ -38,7 +38,7 @@
                                     type="submit" (click)="signIn()">Sign in
                             </button>
                             <p *ngIf="isEmpty == true">
-                                <ngb-alert [dismissible]="false">
+                                <ngb-alert [dismissible]="true">
                                   <strong>¡Campos vacíos!</strong> Rellénelos antes de continuar.
                                 </ngb-alert>
                             </p>

@@ -23,7 +23,7 @@ export class ProductSizeComponent implements OnInit {
   isAddedWish: boolean = false;
   isRemovedWish: boolean = false;
   isLessFive: boolean = false;
-  isLessTen: boolean = false;
+  isLessTwenty: boolean = false;
 
 
   @Input()
@@ -85,7 +85,7 @@ export class ProductSizeComponent implements OnInit {
         console.log(this.productSizes[this.selectedProduct]?.stock)
       }
       else if(this.productSizes[this.selectedProduct]?.stock < 20){
-        this.lessThanTen();
+        this.lessThanTwenty();
       }
 
     } else {
@@ -192,8 +192,8 @@ export class ProductSizeComponent implements OnInit {
     this.isLessFive = true;
   }
 
-  lessThanTen(){
-    this.isLessTen = true;
+  lessThanTwenty(){
+    this.isLessTwenty = true;
   }
 
 }
