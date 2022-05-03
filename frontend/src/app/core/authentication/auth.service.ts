@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { catchError, map, Observable, of } from 'rxjs';
+import { BehaviorSubject, catchError, map, Observable, of } from 'rxjs';
 
 import { Status, UserRole } from '@app/shared/data-type';
 import { AuthResponse, LoginRequest, ShopUser } from '@app/shared/model';
@@ -13,12 +13,18 @@ const BASE_URL = '/api/auth'
 })
 export class AuthService {
 
+  private userObservableData = new BehaviorSubject< ShopUser | null >(null);
+
+  $userObservable = this.userObservableData.asObservable();
+
   userData: ShopUser | undefined;
 
   constructor(
     private httpClient: HttpClient,
     private shopUserService: ShopUserService
-    ) { }
+    ) { 
+      this.loadUserForInit();
+    }
 
   login(loginRequest: LoginRequest): Observable<AuthResponse> {
 
@@ -29,15 +35,23 @@ export class AuthService {
 
   logout(): Observable<AuthResponse> {
     
-    let url: string = BASE_URL + `logout`;
-
+    let url: string = BASE_URL + `/logout`;
+    this.userData = undefined
     return this.httpClient.post(url, null).pipe() as Observable<AuthResponse>
+    
+  }
+
+  loadUserForInit() {
+    this.loadUser().subscribe();
   }
 
   loadUser(): Observable<ShopUser> {
 
     return this.shopUserService.getOwnUser().pipe(map(
-      response => this.userData = response,
+      response => {
+        this.userObservableData.next(response);
+        return this.userData = response
+      },
       (error: String) => {
         this.userData = undefined;
         console.log(error);

@@ -9,7 +9,7 @@
 
         <!-- size availability -->
         <div class="row">
-
+                
         </div>
 
         <!-- pick-size -->       
@@ -22,15 +22,35 @@
                     [class.text-white]="i == selectedProduct"
                     (click)="selectSize(i)">
                     
+
                     {{product.size}}
                 </div>
-                
                 <ng-template #exist>
                     <div type="button" class="col-1 btn btn-outline-secondary disabled m-0">
                         {{product.size}}
                     </div>
                 </ng-template> 
-            </ng-template>                                                 
+            </ng-template>    
+            <p *ngIf="isAmount">
+                <ngb-alert [dismissible]="true" type='danger'>
+                  <strong>Not enough stock</strong>
+                </ngb-alert>
+            </p>  
+            <p *ngIf="isSelect">
+                <ngb-alert [dismissible]="true" >
+                  <strong>Select size</strong>
+                </ngb-alert>
+            </p> 
+            <p *ngIf="isLessTwenty">
+                <ngb-alert [dismissible]="false">
+                  <strong>Low stock, only {{productSizes[selectedProduct!].stock}} units available</strong> <!---->
+                </ngb-alert>
+            </p>  
+            <p *ngIf="isLessFive">
+                <ngb-alert [dismissible]="false" type="danger">
+                  <strong>Low stock, only {{productSizes[selectedProduct!].stock}} units available</strong> <!---->
+                </ngb-alert>
+            </p>                                              
         </div>
 
         <!-- product description -->
@@ -42,7 +62,7 @@
         <div class="form-group" *ngIf="isLogged(); else login">
 
             <div class="row">
-                <!-- Button to add in cart -->
+                <!-- Button to add in wishlist -->
                 <div id="fav-btn" class="col-1 btn btn-outline-dark p-1 mx-1"
                 [class.bg-dark]="isPresent"
                 [class.text-white]="isPresent"
@@ -57,6 +77,21 @@
 
                     <i class="bi-cart-fill"> Add to cart</i>
                 </button>
+                <p *ngIf="isAdded">
+                    <ngb-alert #selfClosingAlert [dismissible]="false" type='success'>
+                      <strong>Added to cart!</strong>
+                    </ngb-alert>
+                </p> 
+                <p *ngIf="isAddedWish">
+                    <ngb-alert [dismissible]="false" type='success'>
+                      <strong>Added to wishlist!</strong>
+                    </ngb-alert>
+                </p> 
+                <p *ngIf="isRemovedWish">
+                    <ngb-alert [dismissible]="false" type='danger'>
+                      <strong>Removed from wishlist!</strong>
+                    </ngb-alert>
+                </p> 
 
                 <!-- input to set the amount -->
                 <div class="col-2">

@@ -14,6 +14,13 @@ import { ChangePasswordComponent } from '../change-password/change-password.comp
 })
 export class AccountDetailsComponent implements OnInit {
 
+  isProfEdit: boolean = false;
+  isWrongEmail: boolean = false;
+  isNotProfEdit: boolean = false;
+  isWrongDate: boolean = false;
+  isChangedPass: boolean = false;
+  isNotChangedPass: boolean = false;
+
   public user: UserEditProgileInterface = new UserEditProfile();
 
   constructor(
@@ -47,11 +54,15 @@ export class AccountDetailsComponent implements OnInit {
     let isValid = this.validateDataService.isValidEmail(this.user.email);
     
     if (!isValid) {
-      // set error message for wrong email.
+      // alert wrong email
+      this.wrongEmail();
     }
-    if (isValid = this.validateDataService.isValidDate(this.user.birthdate)) {
+    //isValid = this.validateDataService.isValidDate(this.user.birthdate)
+    //if (!isValid) {
       // set error message for wrong date.
-    }  
+      //this.wrongDate();
+      //console.log("mal date")
+    //}  
     return isValid;
   }
 
@@ -61,18 +72,20 @@ export class AccountDetailsComponent implements OnInit {
 
       this.userService.editUserProfile(this.user).subscribe(
         response => {
-          console.log(response)
-          // Create alert success
+          // Alert profile edited
+          this.profileEdited();
 
         },
         error => {
-          console.log(error)
-          // Create alert error
+          // Alert no edited profile
+          this.wrongProfileEdited();
         }
       );
     }
-    console.log("Data is invalid")
-    // Create alert error
+    else{
+    // Alert error
+    this.wrongProfileEdited();
+    }
   }  
 
   openFormChangePassword() {
@@ -88,17 +101,42 @@ export class AccountDetailsComponent implements OnInit {
         }
         this.userService.changePassword(userChangePassword).subscribe(
           response => {
-            console.log(response)
-            // success alert
+            // alert changed pass
+            this.changedPass();
           },
           error => {
-            console.log(error)
-            // error alert
+            // alert not changed pass
+            this.notChangedPass();
           })
       }).catch(
         (error) => {
-          console.log(error)
+          //console.log(error)
+          this.notChangedPass();
         
       })
+  }
+
+  profileEdited() {
+    this.isProfEdit = true;
+  }
+
+  wrongProfileEdited(){
+    this.isNotProfEdit = true;
+  }
+
+  wrongDate() {
+    this.isWrongDate = true;
+  }
+
+  wrongEmail() {
+    this.isWrongEmail = true;
+  }
+
+  changedPass(){
+    this.isChangedPass = true;
+  }
+
+  notChangedPass(){
+    this.isNotChangedPass = true;
   }
 }

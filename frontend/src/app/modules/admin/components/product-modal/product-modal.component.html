@@ -1,0 +1,120 @@
+<div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Product Data</h4>
+    <button type="button" class="btn-close" aria-label="Close" (click)="closeModalManipulateProduct()"></button>
+    </div>
+
+
+<form [formGroup]="manipulateProduct" (ngSubmit)="submitForm()">
+
+    <div class="modal-body">
+
+        <div class="form-container">
+            <div class="form-floating mb-3">
+                
+                <input type="text" 
+                    class="form-control"
+                    formControlName="name"
+                    name="name"
+                    placeholder="Name"
+                    required>       
+
+                <label for="name">Name</label>                      
+            </div>
+
+            <div class="form-floating mb-3">
+               
+                <input type="text"
+                    class="form-control"
+                    formControlName="description"
+                    name="description"
+                    placeholder="Description"
+                    required>    
+                
+                <label for="description">Description</label>
+            </div>
+
+            <div class="form-floating mb-3">
+
+                <input type="number" 
+                    class="form-control"
+                    formControlName="price"
+                    name="price"
+                    placeholder="Price"
+                    required>   
+                    
+                <label for="price">Price</label>    
+            </div>
+
+            <div class="form-floating mb-3">
+
+                <input type="number" 
+                    class="form-control"
+                    formControlName="stock"
+                    name="stock"
+                    placeholder="Stock"
+                    required>   
+                    
+                <label for="stock">Stock</label>    
+            </div>
+
+            <div class="form-floating mb-3">
+
+                <select 
+                    formControlName="size"
+                    name="size"
+                    class="form-control">
+
+                    <option *ngFor="let sizeOption of sizeOptions" [ngValue]="sizeOption">
+                     {{ sizeOption }}
+                    </option>
+                </select>  
+                
+                <label for="editSize">Size</label>
+            </div>
+
+            <div class="img-group">
+
+                <ng-container formArrayName="images">
+                    <ng-container *ngFor="let imageForm of getImages().controls; index as i">
+                        
+                        <label for="image1">Image#{{i + 1}}</label>
+                        <input type="file"
+                            class="form-control"
+                            [formControlName]="i"
+                            name="image{{i + 1}}"
+                            accept=".webp">
+                      
+                    </ng-container>
+                </ng-container>
+                
+            </div>
+
+            <button class="btn btn-outline-dark mt-2 me-2" type="button" (click)="addImageForm()"><i class="fa fa-plus"></i></button>
+            <button class="btn btn-outline-dark mt-2 me-2" type="button" (click)="removeImageForm()"><i class="fa fa-minus"></i></button>
+            
+
+
+        </div>
+
+    </div>
+
+    <div class="modal-footer">
+
+        <div class="row">
+            <button class="btn btn-outline-dark btn-success text-uppercase fw-bold"
+                [disabled]="!manipulateProduct.valid">
+
+                Confirm
+            </button>
+        </div>
+
+        <div class="row">
+            <button class="btn btn-outline-dark text-uppercase fw-bold"
+                (click)="closeModalManipulateProduct()">
+
+                Cancel
+            </button>
+        </div>
+    </div>
+
+</form>

@@ -6,6 +6,8 @@ import { NavigationService } from '@app/core/service';
 import { AuthResponse, LoginRequest } from '@app/shared/model';
 import { Status } from '@app/shared/data-type'
 
+
+
 @Component({
   selector: 'app-sign-in',
   templateUrl: './sign-in.component.html',
@@ -66,45 +68,17 @@ export class SignInComponent implements OnInit {
 
     } else {
       this.emptyPasswordField();
+      this.errorResponse();
 
     }
   }
 
-  errorResponse(): void {
-
+  
+  errorResponse() {
 
     this.emptyPasswordField();
-    // Add warning about wrong credentials
-
+    this.isWrong = true;
   }
-
-  errorRespons(): boolean {
-
-    let regex = "^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$";
-    let isWrong = this.username.match(regex) != null;
-
-    if (!isWrong) {
-      this.isWrong = false;
-    }
-      else{
-        this.isWrong = true;
-    }
-    return isWrong;
-  }
-
-/*
-  let isMatch: boolean =  this.password == this.repeatedPassword;
-    if (!isMatch) {
-      this.isMatch = true;
-
-    }
-    else{
-      this.isMatch = false;
-    }
-
-    return isMatch
-  }*/
-
 
   signIn(): void {
     
@@ -124,5 +98,6 @@ export class SignInComponent implements OnInit {
 
 
 export class NgbdAlertBasic {
+  
 }
 

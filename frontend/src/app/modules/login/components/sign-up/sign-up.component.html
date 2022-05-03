@@ -25,7 +25,7 @@
                                    placeholder="name@example.com" [(ngModel)]="email" required>
                             <label for="signUpEmail">Email address</label>
                             <p *ngIf="isValid == true">
-                                <ngb-alert [dismissible]="false">
+                                <ngb-alert [dismissible]="true">
                                   <strong>El formato de email no es correcto.</strong> Inténtelo de nuevo.
                                 </ngb-alert>
                             </p>
@@ -44,8 +44,13 @@
                                    placeholder="Confirmation Password" [(ngModel)]="repeatedPassword" required>
                             <label for="signUpPasswordRepeat">Repeat Password</label>
                             <p *ngIf="isMatch == true">
-                                <ngb-alert [dismissible]="false">
+                                <ngb-alert [dismissible]="true">
                                   <strong>Las constraseñas no coinciden.</strong> Inténtelo de nuevo.
+                                </ngb-alert>
+                            </p>
+                            <p *ngIf="isFailed == true">
+                                <ngb-alert [dismissible]="true">
+                                  <strong>El usuario ya existe.</strong> Inténtelo de nuevo.
                                 </ngb-alert>
                             </p>
                         </div>
@@ -57,7 +62,7 @@
                                     type="submit" (click)="signUp()">Sign up
                             </button>
                             <p *ngIf="isEmpty == true">
-                                <ngb-alert [dismissible]="false">
+                                <ngb-alert [dismissible]="true">
                                   <strong>¡Campos vacíos!</strong> Rellénelos antes de continuar.
                                 </ngb-alert>
                             </p>

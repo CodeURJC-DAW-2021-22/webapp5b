@@ -5,6 +5,10 @@ import { Wishlist } from '@app/shared/classes/wishlist';
 import { TransactionSpecialType } from '@app/shared/data-type';
 import { Product, ProductInTransaction } from '@app/shared/model';
 import { faHeart } from '@fortawesome/free-solid-svg-icons';
+import { NgbAlert } from '@ng-bootstrap/ng-bootstrap';
+
+
+
 
 @Component({
   selector: 'app-product-size',
@@ -12,6 +16,15 @@ import { faHeart } from '@fortawesome/free-solid-svg-icons';
   styleUrls: ['./product-size.component.css']
 })
 export class ProductSizeComponent implements OnInit {
+
+  isAmount : boolean = false;
+  isAdded: boolean = false;
+  isSelect: boolean = false;
+  isAddedWish: boolean = false;
+  isRemovedWish: boolean = false;
+  isLessFive: boolean = false;
+  isLessTwenty: boolean = false;
+
 
   @Input()
   productSizes!: Product[];
@@ -47,6 +60,8 @@ export class ProductSizeComponent implements OnInit {
 
     this.productInTransaction = this.initProductInTransaction();
     this.checkIfPresentInWishlist();
+
+
   }
 
   initProductInTransaction(): ProductInTransaction {
@@ -65,6 +80,13 @@ export class ProductSizeComponent implements OnInit {
 
     if (this.selectedProduct === undefined || this.selectedProduct != index) {
       this.selectedProduct = index;
+      if (this.productSizes[this.selectedProduct]?.stock < 5) {
+
+        console.log(this.productSizes[this.selectedProduct]?.stock)
+      }
+      else if(this.productSizes[this.selectedProduct]?.stock < 20){
+        this.lessThanTwenty();
+      }
 
     } else {
       this.selectedProduct = undefined;
@@ -82,8 +104,9 @@ export class ProductSizeComponent implements OnInit {
     if (this.selectedProduct !== undefined) {
 
       if (this.amount > this.productSizes[this.selectedProduct]?.stock) { 
-        // send alert
-        console.log("Not enough products in stock")
+        // alert not enough amount
+        this.errorAmount();
+      
 
       } else {
         let index: number = this.selectedProduct;
@@ -91,7 +114,8 @@ export class ProductSizeComponent implements OnInit {
         this.transactionService.addProductByAmountToMyTransaction
         (this.productSizes[this.selectedProduct].id, this.cartType, this.amount).subscribe(
           response => {
-            console.log("works!");
+            // alert added to cart
+            this.addedToCart();
             this.productSizes[index].stock -= this.amount;
           },
           error => console.log(error)
@@ -99,8 +123,25 @@ export class ProductSizeComponent implements OnInit {
 
       }
     } 
-    // send alert
-    console.log("Select a product")
+    else{
+    // alert select size
+    this.select();
+    }
+  }
+  
+
+
+  errorAmount() {
+
+    this.isAmount = true;
+  }
+
+  addedToCart(){
+    this.isAdded = true;
+  }
+
+  select(){
+    this.isSelect = true;
   }
 
   toogleWishlist() {
@@ -122,7 +163,7 @@ export class ProductSizeComponent implements OnInit {
     this.isPresent = true;
     this.transactionService.addProductByAmountToMyTransaction
       (this.productSizes?.[0].id, this.wishlistType, 1).subscribe(
-        response => console.log("works!")
+        response => this.addedWish()
       )
   }
 
@@ -131,12 +172,28 @@ export class ProductSizeComponent implements OnInit {
     this.isPresent = false;
     this.transactionService.deleteProductFromMyTransaction
       (this.productSizes?.[0].id, this.wishlistType).subscribe(
-        response => console.log("works!")
+        response => this.removedWish()
       )
   }
 
   isLogged(): boolean {
     return this.user != null;
+  }
+
+  addedWish(){
+    this.isAddedWish = true;
+  }
+
+  removedWish(){
+    this.isRemovedWish = true;
+  } 
+
+  lessThanFive(){
+    this.isLessFive = true;
+  }
+
+  lessThanTwenty(){
+    this.isLessTwenty = true;
   }
 
 }
